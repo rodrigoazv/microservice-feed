@@ -9,6 +9,6 @@ def configure(app):
 
 class Teste(db.Model):
     id = db.Column('id', db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column('name_teste', db.String(150))
-    def __init__(self, name):
-        self.name
+    name_teste = db.Column('name_teste', db.String(150))
+    def __init__(self, name_teste):
+        self.name_teste

@@ -6,21 +6,20 @@ from .serealizers import configure as config_ma
 from flask_sqlalchemy import SQLAlchemy
 from .model import configure as config_db
 from .model import Teste
-from .serealizers import TesteSchema
+from .serealizers import TesteSchemas
 
 teste = Blueprint('teste', __name__)
 
 @teste.route('/')
 def hello_world():
     test = current_app.db.session.query(Teste).all()
-    return TesteSchema(many=True).jsonify(test), 200
+    return TesteSchemas(many=True).jsonify(test), 200
 
 @teste.route('/post', methods=['POST'])
 def add():
-    print(request.json)
-    tt = TesteSchema()
-    tt.load(request.json)
-
-    current_app.db.session.add(tt)
+    tt = TesteSchemas()
+    teste = tt.load(request.json)
+    
+    current_app.db.session.add(teste)
     current_app.db.session.commit()
-    return tt.jsonify(test), 201
+    return tt.jsonify(teste), 201

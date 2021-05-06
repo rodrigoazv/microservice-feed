@@ -6,7 +6,6 @@ from .serealizers import configure as config_ma
 from flask_sqlalchemy import SQLAlchemy
 from .model import configure as config_db
 from .model import Teste
-from .serealizers import TesteSchema
 
 from .teste import teste
 
